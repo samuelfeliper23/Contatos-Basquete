@@ -1,0 +1,211 @@
+/* ============================================================
+   ESTILOS — CRUD DE CONTATOS
+   Sistemas Web I | 2AI | MTEC Informática para Web
+   ============================================================ */
+
+/* Reset básico: remove margens e paddings padrão do navegador */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* faz o padding não aumentar o tamanho do elemento */
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc');
+  background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  //background-color: #f0f2f5;
+  color: #333;
+  padding: 20px;
+}
+
+
+
+/* Centraliza o conteúdo principal e limita a largura máxima */
+.container {
+  max-width: 860px;
+  margin: 0 auto;           /* centraliza horizontalmente */
+  background: rgba(37, 24, 68, 0.92);
+  border: 2px solid #FDB927;
+  border-radius: 10px;
+  box-shadow: 0 0px 40px rgba(0,0,0,0.4);
+  padding: 30px;
+  color: white;
+}
+
+/* Cabeçalho da página */
+header {
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #FDB927;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+/* Barra superior com botão de ação */
+.barra-acoes {
+  display: flex;
+  justify-content: flex-end; /* alinha o botão à direita */
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   TABELA
+   ============================================================ */
+table {
+  width: 100%;
+  border-collapse: collapse; /* remove espaço entre bordas das células */
+  margin-top: 8px;
+}
+
+thead {
+  background-color: #552583;
+  color: white;
+}
+
+thead th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e8e8e8;
+  transition: background 0.15s; /* animação suave no hover */
+}
+
+tbody tr:hover {
+  background-color: #f7f9fc; /* destaca a linha ao passar o mouse */
+}
+
+tbody td {
+  padding: 11px 14px;
+  vertical-align: middle;
+}
+
+.acoes {
+  display: flex;
+  gap: 8px;        /* espaço entre os botões */
+  align-items: center;
+}
+
+/* Total de registros */
+.total {
+  margin-top: 14px;
+  color: #666;
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* Mensagem quando não há dados */
+.sem-dados {
+  text-align: center;
+  padding: 40px;
+  color: #aaa;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   FORMULÁRIOS
+   ============================================================ */
+.formulario {
+  display: flex;
+  flex-direction: column; /* campos empilhados verticalmente */
+  gap: 18px;
+  max-width: 480px;
+  margin-top: 10px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-weight: 600;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.campo input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: #3498db; /* destaca o campo selecionado em azul */
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn {
+  display: inline-block;
+  padding: 9px 18px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+
+.btn-gold {
+  background-color: #FDB927;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.btn:hover {
+  opacity: 0.85; /* levemente transparente ao passar o mouse */
+}
+
+/* Verde — criar / salvar */
+.btn-verde {
+  background-color: #27ae60;
+  color: white;
+}
+
+/* Azul — editar */
+.btn-azul {
+  background-color: #2980b9;
+  color: white;
+}
+
+/* Vermelho — excluir */
+.btn-vermelho {
+  background-color: #c0392b;
+  color: white;
+}
+
+/* Cinza — cancelar / voltar */
+.btn-cinza {
+  background-color: #95a5a6;
+  color: white;
+}
