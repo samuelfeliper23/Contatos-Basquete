@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- <%= titulo %> imprime a variável "titulo" enviada pelo server.js -->
+  <title><%= titulo %></title>
+
+  <link rel="stylesheet" href="/style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Merriweather"
+    rel="stylesheet">
+</head>
+<body>
+
+  <div class="overlay"></div>
+
+  <div class="container">
+
+    <header>
+      <h1>🏀 <%= titulo %></h1>
+      <p class="subtitulo">Central de Contatos dos Jogadores</p>
+    </header>
+
+    <!-- Botão para abrir o formulário de criação de novo contato -->
+    <section class="barra-acoes">
+      <a href="/contatos/novo" class="btn btn-gold"> + Novo Jogador</a>
+    </section>
+
+    <!-- Verificamos se há contatos no array antes de tentar listar -->
+    <% if (contatos.length === 0) { %>
+
+      <p class="sem-dados">Nenhum contato cadastrado ainda.</p>
+
+    <% } else { %>
+
+      <!-- Tabela com todos os contatos -->
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>E-mail</th>
+            <th>Modalidade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- Loop EJS: para cada contato no array, cria uma linha na tabela -->
+          <% contatos.forEach(function(contato) { %>
+            <tr>
+              <td><%= contato.id %></td>
+              <td><%= contato.nome %></td>
+              <td><%= contato.data_nasc %></td>
+              <td><%= contato.email %></td>
+              <td><%= contato.modalidade %></td>
+              <td class="acoes">
+
+                <!-- Link para a página de edição deste contato -->
+                <a href="/contatos/editar/<%= contato.id %>" class="btn btn-azul">Editar</a>
+
+                <!--
+                  Formulário de exclusão com botão.
+                  Usamos um form com POST pois HTML nao suporta DELETE diretamente.
+                  "onsubmit" pede confirmação antes de enviar.
+                -->
+                <form
+                  action="/contatos/deletar/<%= contato.id %>"
+                  method="POST"
+                  style="display:inline"
+                  onsubmit="return confirm('Tem certeza que deseja excluir <%= contato.nome %>?')">
+                  <button type="submit" class="btn btn-vermelho">Excluir</button>
+                </form>
+
+              </td>
+            </tr>
+          <% }); %>
+
+        </tbody>
+      </table>
+
+      <!-- Exibe quantos contatos existem no array -->
+      <p class="total">Total: <strong><%= contatos.length %></strong> contato(s) cadastrado(s).</p>
+
+    <% } %>
+
+  </div>
+
+</body>
+</html>
